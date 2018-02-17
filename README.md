@@ -1,2 +1,3 @@
-# SoccerViz
-Soccer visualizations
+# Soccer visualizations
+- Soccer formations heatmap
+

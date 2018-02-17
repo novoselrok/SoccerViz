@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soccer formations heatmap</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+        html, body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: ghostwhite;
+        }
+
+        svg *::selection {
+            background: transparent;
+        }
+
+        .cell-border {
+            stroke: #f5f5f5;
+            stroke-width: 0.3px;
+        }
+
+        .mono {
+            font-size: 9pt;
+            font-family: 'Open Sans', sans-serif;
+            fill: #aaa;
+        }
+
+        .cell {
+            cursor: pointer;
+        }
+
+        .axis {
+            text-anchor: middle;
+            font-size: 12px;
+        }
+
+        .value {
+            text-anchor: middle;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+        }
+
+        .heatmap-types-radios {
+            display: inline-block;
+        }
+
+        .controls {
+            margin-bottom: 2em;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        #tooltip {
+            position: absolute;
+            background-color: white;
+            width: 200px;
+            height: auto;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        #tooltip.hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="center">
+    <h1>Soccer formations heatmap</h1>
+    <h4>Matches from the 5 big leagues since the 2009/10 season</h4>
+</div>
+
+
+<div id="chart" class="center">
+    <div class="controls">
+        <label for="select_outcome">
+            <span>Heatmap:</span>
+            <select id="select_outcome">
+                <option value="overall_count">Total games count</option>
+                <option value="home_win" selected>Games where the home team won</option>
+                <option value="draw">Games where the teams drew</option>
+                <option value="away_win">Games where the away team won</option>
+            </select>
+        </label>
+        <div class="heatmap-types-radios">
+            <input type="radio" id="heatmap_type_percentage" name="heatmap_type" value="percentage" checked>
+            <label for="heatmap_type_percentage">Percentage</label>
+            <input type="radio" id="heatmap_type_counts" name="heatmap_type" value="counts">
+            <label for="heatmap_type_counts">Total count</label>
+        </div>
+    </div>
+</div>
+<div id="tooltip" class="hidden"></div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.5/d3-legend.js"></script>
+<script src="formations_heatmap.js"></script>
+</body>
+</html>
