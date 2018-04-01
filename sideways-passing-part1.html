@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sideways passing in the Premier League (Part 1)</title>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<article>
+    <h1>Sideways passing in the Premier League (Part 1)</h1>
+    <div class="subheader">By <a href="https://twitter.com/novoselrok">Rok Novosel</a>, 01/04/2018</div>
+    <p>
+        In the first part of my investigation into sideways passing in the Premier league I will focus on the teams.
+        So, why does sideways passing matter? Well, it is usually a sign of a team lacking creativity and urgency. It is
+        a great way of keeping
+        possession, but it does not hurt the opposition. We often accuse players of taking the easy option when playing
+        a
+        sideways pass instead of taking a risk with a forward pass.
+    </p>
+    <p>
+        If you ever watched an Arsenal game, you know how important Özil is to keep the team ticking. Without him
+        the Arsenal attack is just a myriad of sideways passes in front of the opposition goal. I know, I know, you are
+        trying to break down the opposition, but after a while it just becomes frustrating to watch.
+    </p>
+    <p>
+        Plagued by my hatred of sideways passing, I decided to put a hypothesis to the test:
+        <i>Do better teams play fewer sideways passes?</i>
+    </p>
+    <p>
+        To test this hypothesis I scraped passing data from various sites. I converted the passes to angles and
+        classified them based on the following image:
+    </p>
+    <div style="text-align: center;">
+        <img src="area.png" alt="Areas of passes. Red is backward, yellow is sideways and green is a forward pass."
+             width="200" height="200">
+    </div>
+    <p>
+        Red area - backward passes, yellow area - sideways passes and green area - forward passes.
+    </p>
+
+    <p>
+        Below is the visualization of the passing data starting from the 2013/14 season. I visualized the relative
+        percentages of the passes (e.g. sideways passes / total passes). You can also click on the items in the legend
+        to only see a subset of the passes.
+    </p>
+
+    <figure style="overflow: auto;">
+        <div class="chart-wrapper" style="min-height: 400px; min-width: 740px; padding: 1em;">
+            <div class="controls">
+                <div>
+                    Select a season:
+                    <label><input type="radio" name="season-teams" value="2013/2014"/> 2013/14 </label>
+                    <label><input type="radio" name="season-teams" value="2014/2015"/> 2014/15 </label>
+                    <label><input type="radio" name="season-teams" value="2015/2016"/> 2015/16 </label>
+                    <label><input type="radio" name="season-teams" value="2016/2017"/> 2016/17 </label>
+                    <label><input type="radio" name="season-teams" value="2017/2018" checked="checked"/> 2017/18*
+                    </label>
+                </div>
+                <div>
+                    Sort by:
+                    <label><input type="radio" name="sort-by-teams" value="back"/> Backward passes </label>
+                    <label><input type="radio" name="sort-by-teams" value="side" checked="checked"/> Sideways passes
+                    </label>
+                    <label><input type="radio" name="sort-by-teams" value="forward"/> Forward passes
+                    </label>
+                </div>
+            </div>
+            <canvas id="chart-1"></canvas>
+        </div>
+    </figure>
+
+    <p>
+        Looking at the 2017/18 season and sorting by sideways passes, we see that the so called "big six" are occupying
+        the first six spots. But looking through the seasons that is not always the
+        case. For example, Everton
+        had the fewest sideways passes in the 2013/14 season. That season they finished just outside the top 4 and
+        qualified for Europe. A great start to an otherwise underwhelming Martinez era.
+    </p>
+    <p>
+        Another thing is that Man City dropped more than 2% of the sideways passes
+        between the 2015/16 and 2016/17 seasons (11% to 8.9%). That might not seem a lot, but that is 500 passes
+        that were going forward instead of sideways. That Pep dude sure knows what he is doing.
+    </p>
+    <p>
+        The chart is pretty cool, but it doesn't help much with the hypothesis. To see if there is any correlation
+        between
+        sideways passing and teams performance we need a different chart. Below I plotted the teams final position in
+        the league
+        against their sideways passing percentage that season.
+    </p>
+    <figure style="overflow: auto;">
+        <div class="chart-wrapper" style="min-height: 400px; min-width: 740px; padding: 1em;">
+            <canvas id="chart-2"></canvas>
+        </div>
+    </figure>
+
+    <p>
+        If you squint your eyes you can observe a slight upwards trend of the sideways passing percentages. To quantify
+        this trend we can calculate the <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson
+        correlation coefficient</a>.
+        For this data it comes out to <strong>0.59</strong>. That means that there is a moderately strong correlation
+        between the
+        final league position and the sideways passing percentage of a team.
+    </p>
+
+    <p>
+        Does that confirm my hypothesis? Well, kind of. The correlation coefficient is not high enough to make any
+        definitive
+        conclusions. But it does make sense that attacking teams (less sideways passing) end up higher on the table.
+    </p>
+
+    <p>
+        For Part 2 of this series I will look into players themselves and analyze their passing habits. If you have any
+        questions, post them down below :)
+    </p>
+    <script type="application/json" id="position_and_side_ratio">
+        [
+            {
+                "label": "2017/2018",
+                "data": [
+                    {
+                        "x": 7,
+                        "y": 0.132
+                    },
+                    {
+                        "x": 1,
+                        "y": 0.088
+                    },
+                    {
+                        "x": 9,
+                        "y": 0.114
+                    },
+                    {
+                        "x": 18,
+                        "y": 0.13
+                    },
+                    {
+                        "x": 13,
+                        "y": 0.116
+                    },
+                    {
+                        "x": 12,
+                        "y": 0.124
+                    },
+                    {
+                        "x": 8,
+                        "y": 0.094
+                    },
+                    {
+                        "x": 17,
+                        "y": 0.099
+                    },
+                    {
+                        "x": 2,
+                        "y": 0.087
+                    },
+                    {
+                        "x": 19,
+                        "y": 0.131
+                    },
+                    {
+                        "x": 20,
+                        "y": 0.13
+                    },
+                    {
+                        "x": 15,
+                        "y": 0.103
+                    },
+                    {
+                        "x": 6,
+                        "y": 0.086
+                    },
+                    {
+                        "x": 10,
+                        "y": 0.108
+                    },
+                    {
+                        "x": 14,
+                        "y": 0.107
+                    },
+                    {
+                        "x": 16,
+                        "y": 0.123
+                    },
+                    {
+                        "x": 3,
+                        "y": 0.093
+                    },
+                    {
+                        "x": 5,
+                        "y": 0.081
+                    },
+                    {
+                        "x": 11,
+                        "y": 0.108
+                    },
+                    {
+                        "x": 4,
+                        "y": 0.087
+                    }
+                ],
+                "backgroundColor": "rgba( 46, 134, 193, 0.5)",
+                "borderColor": "rgba( 46, 134, 193, 1)",
+                "showLine": false
+            },
+            {
+                "label": "2016/2017",
+                "data": [
+                    {
+                        "x": 17,
+                        "y": 0.114
+                    },
+                    {
+                        "x": 4,
+                        "y": 0.101
+                    },
+                    {
+                        "x": 11,
+                        "y": 0.113
+                    },
+                    {
+                        "x": 2,
+                        "y": 0.088
+                    },
+                    {
+                        "x": 3,
+                        "y": 0.089
+                    },
+                    {
+                        "x": 14,
+                        "y": 0.117
+                    },
+                    {
+                        "x": 9,
+                        "y": 0.093
+                    },
+                    {
+                        "x": 13,
+                        "y": 0.113
+                    },
+                    {
+                        "x": 16,
+                        "y": 0.128
+                    },
+                    {
+                        "x": 10,
+                        "y": 0.134
+                    },
+                    {
+                        "x": 18,
+                        "y": 0.107
+                    },
+                    {
+                        "x": 20,
+                        "y": 0.12
+                    },
+                    {
+                        "x": 12,
+                        "y": 0.117
+                    },
+                    {
+                        "x": 15,
+                        "y": 0.097
+                    },
+                    {
+                        "x": 7,
+                        "y": 0.1
+                    },
+                    {
+                        "x": 8,
+                        "y": 0.102
+                    },
+                    {
+                        "x": 5,
+                        "y": 0.094
+                    },
+                    {
+                        "x": 6,
+                        "y": 0.09
+                    },
+                    {
+                        "x": 1,
+                        "y": 0.093
+                    },
+                    {
+                        "x": 19,
+                        "y": 0.112
+                    }
+                ],
+                "backgroundColor": "rgba( 46, 134, 193, 0.5)",
+                "borderColor": "rgba( 46, 134, 193, 1)",
+                "showLine": false
+            },
+            {
+                "label": "2015/2016",
+                "data": [
+                    {
+                        "x": 12,
+                        "y": 0.102
+                    },
+                    {
+                        "x": 8,
+                        "y": 0.112
+                    },
+                    {
+                        "x": 5,
+                        "y": 0.087
+                    },
+                    {
+                        "x": 1,
+                        "y": 0.111
+                    },
+                    {
+                        "x": 6,
+                        "y": 0.102
+                    },
+                    {
+                        "x": 4,
+                        "y": 0.11
+                    },
+                    {
+                        "x": 10,
+                        "y": 0.117
+                    },
+                    {
+                        "x": 3,
+                        "y": 0.097
+                    },
+                    {
+                        "x": 19,
+                        "y": 0.134
+                    },
+                    {
+                        "x": 15,
+                        "y": 0.136
+                    },
+                    {
+                        "x": 9,
+                        "y": 0.108
+                    },
+                    {
+                        "x": 7,
+                        "y": 0.128
+                    },
+                    {
+                        "x": 20,
+                        "y": 0.123
+                    },
+                    {
+                        "x": 18,
+                        "y": 0.134
+                    },
+                    {
+                        "x": 16,
+                        "y": 0.121
+                    },
+                    {
+                        "x": 14,
+                        "y": 0.128
+                    },
+                    {
+                        "x": 17,
+                        "y": 0.126
+                    },
+                    {
+                        "x": 11,
+                        "y": 0.094
+                    },
+                    {
+                        "x": 13,
+                        "y": 0.133
+                    },
+                    {
+                        "x": 2,
+                        "y": 0.103
+                    }
+                ],
+                "backgroundColor": "rgba( 46, 134, 193, 0.5)",
+                "borderColor": "rgba( 46, 134, 193, 1)",
+                "showLine": false
+            },
+            {
+                "label": "2014/2015",
+                "data": [
+                    {
+                        "x": 14,
+                        "y": 0.121
+                    },
+                    {
+                        "x": 15,
+                        "y": 0.13
+                    },
+                    {
+                        "x": 6,
+                        "y": 0.106
+                    },
+                    {
+                        "x": 20,
+                        "y": 0.127
+                    },
+                    {
+                        "x": 17,
+                        "y": 0.107
+                    },
+                    {
+                        "x": 11,
+                        "y": 0.094
+                    },
+                    {
+                        "x": 16,
+                        "y": 0.11
+                    },
+                    {
+                        "x": 7,
+                        "y": 0.096
+                    },
+                    {
+                        "x": 8,
+                        "y": 0.111
+                    },
+                    {
+                        "x": 9,
+                        "y": 0.109
+                    },
+                    {
+                        "x": 12,
+                        "y": 0.141
+                    },
+                    {
+                        "x": 19,
+                        "y": 0.131
+                    },
+                    {
+                        "x": 4,
+                        "y": 0.092
+                    },
+                    {
+                        "x": 13,
+                        "y": 0.115
+                    },
+                    {
+                        "x": 1,
+                        "y": 0.114
+                    },
+                    {
+                        "x": 10,
+                        "y": 0.131
+                    },
+                    {
+                        "x": 5,
+                        "y": 0.095
+                    },
+                    {
+                        "x": 2,
+                        "y": 0.103
+                    },
+                    {
+                        "x": 18,
+                        "y": 0.158
+                    },
+                    {
+                        "x": 3,
+                        "y": 0.108
+                    }
+                ],
+                "backgroundColor": "rgba( 46, 134, 193, 0.5)",
+                "borderColor": "rgba( 46, 134, 193, 1)",
+                "showLine": false
+            },
+            {
+                "label": "2013/2014",
+                "data": [
+                    {
+                        "x": 13,
+                        "y": 0.153
+                    },
+                    {
+                        "x": 6,
+                        "y": 0.097
+                    },
+                    {
+                        "x": 7,
+                        "y": 0.092
+                    },
+                    {
+                        "x": 14,
+                        "y": 0.099
+                    },
+                    {
+                        "x": 10,
+                        "y": 0.115
+                    },
+                    {
+                        "x": 20,
+                        "y": 0.129
+                    },
+                    {
+                        "x": 9,
+                        "y": 0.11
+                    },
+                    {
+                        "x": 19,
+                        "y": 0.107
+                    },
+                    {
+                        "x": 12,
+                        "y": 0.103
+                    },
+                    {
+                        "x": 8,
+                        "y": 0.103
+                    },
+                    {
+                        "x": 15,
+                        "y": 0.11
+                    },
+                    {
+                        "x": 16,
+                        "y": 0.127
+                    },
+                    {
+                        "x": 5,
+                        "y": 0.088
+                    },
+                    {
+                        "x": 1,
+                        "y": 0.105
+                    },
+                    {
+                        "x": 4,
+                        "y": 0.114
+                    },
+                    {
+                        "x": 17,
+                        "y": 0.112
+                    },
+                    {
+                        "x": 3,
+                        "y": 0.12
+                    },
+                    {
+                        "x": 18,
+                        "y": 0.129
+                    },
+                    {
+                        "x": 11,
+                        "y": 0.139
+                    },
+                    {
+                        "x": 2,
+                        "y": 0.108
+                    }
+                ],
+                "backgroundColor": "rgba( 46, 134, 193, 0.5)",
+                "borderColor": "rgba( 46, 134, 193, 1)",
+                "showLine": false
+            }
+        ]
+    </script>
+    <script type="application/json" id="seasons_teams_passing">
+        {
+            "2017/2018": {
+                "labels": [
+                    "Burnley",
+                    "Man City",
+                    "Bournemouth",
+                    "Stoke",
+                    "Brighton",
+                    "West Ham",
+                    "Leicester",
+                    "Swansea",
+                    "Man Utd",
+                    "Huddersfield",
+                    "West Brom",
+                    "Southampton",
+                    "Arsenal",
+                    "Everton",
+                    "Crystal Palace",
+                    "Newcastle",
+                    "Liverpool",
+                    "Tottenham",
+                    "Watford",
+                    "Chelsea"
+                ],
+                "data": {
+                    "back": [
+                        0.435,
+                        0.453,
+                        0.448,
+                        0.441,
+                        0.435,
+                        0.427,
+                        0.44,
+                        0.436,
+                        0.453,
+                        0.437,
+                        0.434,
+                        0.44,
+                        0.455,
+                        0.443,
+                        0.438,
+                        0.432,
+                        0.448,
+                        0.454,
+                        0.433,
+                        0.438
+                    ],
+                    "side": [
+                        0.132,
+                        0.088,
+                        0.114,
+                        0.13,
+                        0.116,
+                        0.124,
+                        0.094,
+                        0.099,
+                        0.087,
+                        0.131,
+                        0.13,
+                        0.103,
+                        0.086,
+                        0.108,
+                        0.107,
+                        0.123,
+                        0.093,
+                        0.081,
+                        0.108,
+                        0.087
+                    ],
+                    "forward": [
+                        0.433,
+                        0.459,
+                        0.438,
+                        0.429,
+                        0.448,
+                        0.449,
+                        0.466,
+                        0.465,
+                        0.46,
+                        0.432,
+                        0.436,
+                        0.456,
+                        0.459,
+                        0.449,
+                        0.454,
+                        0.445,
+                        0.459,
+                        0.466,
+                        0.459,
+                        0.475
+                    ]
+                }
+            },
+            "2016/2017": {
+                "labels": [
+                    "Watford",
+                    "Liverpool",
+                    "West Ham",
+                    "Tottenham",
+                    "Man City",
+                    "Crystal Palace",
+                    "Bournemouth",
+                    "Stoke",
+                    "Burnley",
+                    "West Brom",
+                    "Hull",
+                    "Sunderland",
+                    "Leicester",
+                    "Swansea",
+                    "Everton",
+                    "Southampton",
+                    "Arsenal",
+                    "Man Utd",
+                    "Chelsea",
+                    "Middlesbrough"
+                ],
+                "data": {
+                    "back": [
+                        0.44,
+                        0.446,
+                        0.432,
+                        0.455,
+                        0.452,
+                        0.434,
+                        0.449,
+                        0.447,
+                        0.431,
+                        0.434,
+                        0.445,
+                        0.438,
+                        0.435,
+                        0.446,
+                        0.449,
+                        0.443,
+                        0.444,
+                        0.439,
+                        0.434,
+                        0.444
+                    ],
+                    "side": [
+                        0.114,
+                        0.101,
+                        0.113,
+                        0.088,
+                        0.089,
+                        0.117,
+                        0.093,
+                        0.113,
+                        0.128,
+                        0.134,
+                        0.107,
+                        0.12,
+                        0.117,
+                        0.097,
+                        0.1,
+                        0.102,
+                        0.094,
+                        0.09,
+                        0.093,
+                        0.112
+                    ],
+                    "forward": [
+                        0.446,
+                        0.454,
+                        0.456,
+                        0.456,
+                        0.458,
+                        0.448,
+                        0.458,
+                        0.441,
+                        0.442,
+                        0.432,
+                        0.448,
+                        0.442,
+                        0.448,
+                        0.457,
+                        0.451,
+                        0.455,
+                        0.461,
+                        0.471,
+                        0.472,
+                        0.444
+                    ]
+                }
+            },
+            "2015/2016": {
+                "labels": [
+                    "Swansea",
+                    "Liverpool",
+                    "Man Utd",
+                    "Leicester",
+                    "Southampton",
+                    "Man City",
+                    "Chelsea",
+                    "Tottenham",
+                    "Norwich",
+                    "Crystal Palace",
+                    "Stoke",
+                    "West Ham",
+                    "Aston Villa",
+                    "Newcastle",
+                    "Bournemouth",
+                    "West Brom",
+                    "Sunderland",
+                    "Everton",
+                    "Watford",
+                    "Arsenal"
+                ],
+                "data": {
+                    "back": [
+                        0.442,
+                        0.439,
+                        0.447,
+                        0.437,
+                        0.445,
+                        0.443,
+                        0.434,
+                        0.455,
+                        0.432,
+                        0.437,
+                        0.443,
+                        0.421,
+                        0.441,
+                        0.442,
+                        0.433,
+                        0.433,
+                        0.433,
+                        0.456,
+                        0.43,
+                        0.445
+                    ],
+                    "side": [
+                        0.102,
+                        0.112,
+                        0.087,
+                        0.111,
+                        0.102,
+                        0.11,
+                        0.117,
+                        0.097,
+                        0.134,
+                        0.136,
+                        0.108,
+                        0.128,
+                        0.123,
+                        0.134,
+                        0.121,
+                        0.128,
+                        0.126,
+                        0.094,
+                        0.133,
+                        0.103
+                    ],
+                    "forward": [
+                        0.457,
+                        0.448,
+                        0.466,
+                        0.453,
+                        0.453,
+                        0.447,
+                        0.449,
+                        0.448,
+                        0.435,
+                        0.428,
+                        0.448,
+                        0.451,
+                        0.436,
+                        0.425,
+                        0.446,
+                        0.439,
+                        0.441,
+                        0.45,
+                        0.437,
+                        0.451
+                    ]
+                }
+            },
+            "2014/2015": {
+                "labels": [
+                    "Leicester",
+                    "Newcastle",
+                    "Liverpool",
+                    "QPR",
+                    "Aston Villa",
+                    "Everton",
+                    "Sunderland",
+                    "Southampton",
+                    "Swansea",
+                    "Stoke",
+                    "West Ham",
+                    "Burnley",
+                    "Man Utd",
+                    "West Brom",
+                    "Chelsea",
+                    "Crystal Palace",
+                    "Tottenham",
+                    "Man City",
+                    "Hull",
+                    "Arsenal"
+                ],
+                "data": {
+                    "back": [
+                        0.434,
+                        0.436,
+                        0.443,
+                        0.43,
+                        0.443,
+                        0.448,
+                        0.437,
+                        0.446,
+                        0.439,
+                        0.437,
+                        0.434,
+                        0.433,
+                        0.45,
+                        0.437,
+                        0.437,
+                        0.429,
+                        0.453,
+                        0.445,
+                        0.42,
+                        0.439
+                    ],
+                    "side": [
+                        0.121,
+                        0.13,
+                        0.106,
+                        0.127,
+                        0.107,
+                        0.094,
+                        0.11,
+                        0.096,
+                        0.111,
+                        0.109,
+                        0.141,
+                        0.131,
+                        0.092,
+                        0.115,
+                        0.114,
+                        0.131,
+                        0.095,
+                        0.103,
+                        0.158,
+                        0.108
+                    ],
+                    "forward": [
+                        0.444,
+                        0.434,
+                        0.451,
+                        0.443,
+                        0.45,
+                        0.458,
+                        0.453,
+                        0.458,
+                        0.451,
+                        0.454,
+                        0.425,
+                        0.435,
+                        0.458,
+                        0.448,
+                        0.449,
+                        0.44,
+                        0.452,
+                        0.452,
+                        0.422,
+                        0.454
+                    ]
+                }
+            },
+            "2013/2014": {
+                "labels": [
+                    "West Ham",
+                    "Tottenham",
+                    "Man Utd",
+                    "Sunderland",
+                    "Newcastle",
+                    "Cardiff",
+                    "Stoke",
+                    "Fulham",
+                    "Swansea",
+                    "Southampton",
+                    "Aston Villa",
+                    "Hull",
+                    "Everton",
+                    "Man City",
+                    "Arsenal",
+                    "West Brom",
+                    "Chelsea",
+                    "Norwich",
+                    "Crystal Palace",
+                    "Liverpool"
+                ],
+                "data": {
+                    "back": [
+                        0.429,
+                        0.456,
+                        0.448,
+                        0.447,
+                        0.443,
+                        0.44,
+                        0.451,
+                        0.442,
+                        0.447,
+                        0.448,
+                        0.44,
+                        0.43,
+                        0.463,
+                        0.449,
+                        0.443,
+                        0.444,
+                        0.436,
+                        0.44,
+                        0.43,
+                        0.446
+                    ],
+                    "side": [
+                        0.153,
+                        0.097,
+                        0.092,
+                        0.099,
+                        0.115,
+                        0.129,
+                        0.11,
+                        0.107,
+                        0.103,
+                        0.103,
+                        0.11,
+                        0.127,
+                        0.088,
+                        0.105,
+                        0.114,
+                        0.112,
+                        0.12,
+                        0.129,
+                        0.139,
+                        0.108
+                    ],
+                    "forward": [
+                        0.418,
+                        0.447,
+                        0.46,
+                        0.454,
+                        0.442,
+                        0.431,
+                        0.44,
+                        0.45,
+                        0.45,
+                        0.449,
+                        0.45,
+                        0.443,
+                        0.449,
+                        0.447,
+                        0.443,
+                        0.444,
+                        0.443,
+                        0.432,
+                        0.431,
+                        0.445
+                    ]
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('chart-1');
+        var seasonsTeamsPassing = JSON.parse(document.getElementById('seasons_teams_passing').innerHTML);
+
+        var chart1 = new Chart(ctx, {
+            type: 'bar',
+            data: {},
+            options: {
+                legend: {
+                    position: 'right'
+                },
+                scales: {
+                    xAxes: [{
+                        stacked: true
+                    }],
+                    yAxes: [{
+                        stacked: true,
+                        ticks: {
+                            beginAtZero: true,
+                            max: 1
+                        }
+                    }]
+                }
+            }
+        });
+
+        function getValueFromRadioInputs(name) {
+            return document.querySelector('input[name="' + name + '"]:checked').value
+        }
+
+        function zipWithIndex(item, idx) {
+            return [item, idx];
+        }
+
+        function update() {
+            var season = getValueFromRadioInputs('season-teams');
+            var sort = getValueFromRadioInputs('sort-by-teams');
+
+            var labels = seasonsTeamsPassing[season]['labels'].map(zipWithIndex);
+            var back = seasonsTeamsPassing[season]['data']['back'];
+            var side = seasonsTeamsPassing[season]['data']['side'];
+            var forward = seasonsTeamsPassing[season]['data']['forward'];
+
+            function sortingFunction(a, b) {
+                var aIdx = a[1];
+                var bIdx = b[1];
+                switch (sort) {
+                    case 'forward':
+                        return forward[aIdx] - forward[bIdx];
+                    case 'side':
+                        return side[aIdx] - side[bIdx];
+                    case 'back':
+                        return back[aIdx] - back[bIdx];
+                }
+            }
+
+            labels.sort(sortingFunction);
+
+            back = labels.map(function (item) {
+                return back[item[1]];
+            });
+            side = labels.map(function (item) {
+                return side[item[1]];
+            });
+            forward = labels.map(function (item) {
+                return forward[item[1]];
+            });
+            labels = labels.map(function (item) {
+                return item[0];
+            });
+
+            chart1.data.labels = labels;
+            chart1.data.datasets = [
+                {
+                    label: 'Backward',
+                    data: back,
+                    backgroundColor: 'rgba(241, 148, 138, 0.4)',
+                    borderColor: 'rgba(241, 148, 138, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Sideways',
+                    data: side,
+                    backgroundColor: 'rgba(244, 208, 63, 0.4)',
+                    borderColor: 'rgba(244, 208, 63, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Forward',
+                    data: forward,
+                    backgroundColor: 'rgba(82, 190, 128, 0.4)',
+                    borderColor: 'rgba(82, 190, 128, 1)',
+                    borderWidth: 1
+                }
+            ];
+            chart1.update();
+        }
+
+        update();
+
+        document.querySelectorAll('input[name="season-teams"]').forEach(function (el) {
+            el.addEventListener('change', update)
+        });
+        document.querySelectorAll('input[name="sort-by-teams"]').forEach(function (el) {
+            el.addEventListener('change', update)
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById('chart-2');
+        var positionSideRatio = JSON.parse(document.getElementById('position_and_side_ratio').innerHTML);
+        var chart2 = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: positionSideRatio
+            },
+            options: {
+                scales: {
+                    xAxes: [
+                        {
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Final position in the league'
+                            },
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Sideways passing percentage'
+                            }
+                        }
+                    ]
+                }
+            }
+        })
+    </script>
+    <div id="disqus_thread"></div>
+    <script>
+
+        var disqus_config = function () {
+            this.page.url = 'https://novoselrok.github.io/SoccerViz/sideways-passing-part1.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 'sideways-passing-part1'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://roknovosel.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+
+</article>
+</body>
+</html>
